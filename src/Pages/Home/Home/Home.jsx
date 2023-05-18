@@ -1,9 +1,9 @@
 import React from 'react';
-import Carousel from '../../Carousel/Carousel';
+import Carousel from '../Carousel/Carousel';
 
 const Home = () => {
     return (
-        <div>
+        <div className='container mx-auto'>
             <Carousel></Carousel>
         </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logo from '../assets/logo/images.png';
 
 const Header = () => {
 
@@ -10,19 +11,18 @@ const Header = () => {
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
         <li><Link to='/myToy'>My Toys</Link></li>
-        <li><Link to='/allToy'>All Toys</Link></li>
         <li><Link to='/addToy'>Add A Toy</Link></li>
+        <li><Link to='/allToy'>All Toys</Link></li>
         {
             user ?
                 <>
-                    <li> <Link to='/bookings'>My bookings</Link> </li>
                     <li><button onClick={handleLogout}>Log out</button></li>
                 </> :
                 <li><Link to='/login'>Login</Link></li>
         }
     </>
     return (
-        <div className="navbar bg-base-100 container mx-auto">
+        <div className="navbar bg-base-100 container mx-auto mt-4">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -34,10 +34,13 @@ const Header = () => {
                         </ul>
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <div className='flex items-center'>
+                    <img className='w-20 h-20' src={Logo} alt="" />
+                    <a className="btn btn-ghost normal-case text-xl">Toy Cars</a>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-3">
+                <ul className="menu menu-horizontal px-3 font-semibold">
                     {navItems}
                 </ul>
             </div>
