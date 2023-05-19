@@ -37,6 +37,12 @@ const SignUp = () => {
                     <form className="card-body">
                         <div className="form-control">
                             <label className="label">
+                                <span className="label-text">Phot URL</span>
+                            </label>
+                            <input type="text" placeholder="Photo-url" name='photo' className="input input-bordered" />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
                             <input type="text" placeholder="name" name='name' className="input input-bordered" />
