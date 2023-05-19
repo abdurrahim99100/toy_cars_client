@@ -4,18 +4,18 @@ import Logo from '../assets/logo/images.png';
 
 const Header = () => {
 
-    const user = null;
+    const user = '';
 
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
-        <li><Link to='/myToy'>My Toys</Link></li>
-        <li><Link to='/addToy'>Add A Toy</Link></li>
         <li><Link to='/allToy'>All Toys</Link></li>
         {
             user ?
                 <>
+                    <li><Link to='/myToy'>My Toys</Link></li>
+                    <li><Link to='/addToy'>Add A Toy</Link></li>
                     <li><button onClick={handleLogout}>Log out</button></li>
                 </> :
                 <li><Link to='/login'>Login</Link></li>
@@ -36,7 +36,7 @@ const Header = () => {
                 </div>
                 <div className='flex items-center'>
                     <img className='w-20 h-20' src={Logo} alt="" />
-                    <a className="btn btn-ghost normal-case text-xl">Toy Cars</a>
+                    <a className="btn btn-ghost normal-case text-xl">Tesla Cars</a>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
