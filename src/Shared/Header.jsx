@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/logo/images.png';
+import '../Shared/shared.css';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Header = () => {
 
-    const user = '';
+    const { user, logOut } = useContext(AuthContext);
 
+    const handleSignOut = () => {
+        logOut();
+    }
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
@@ -16,11 +21,20 @@ const Header = () => {
                 <>
                     <li><Link to='/myToy'>My Toys</Link></li>
                     <li><Link to='/addToy'>Add A Toy</Link></li>
-                    <li><button onClick={handleLogout}>Log out</button></li>
+                    <li><button onClick={handleSignOut}>Log out</button></li>
+                    <li className=''>
+                        <img 
+                        className='profile' 
+                        src={user?.photoURL} alt="" />
+                    </li>
                 </> :
                 <li><Link to='/login'>Login</Link></li>
         }
     </>
+
+
+
+
     return (
         <div className="navbar bg-base-100 container mx-auto mt-4">
             <div className="navbar-start">
@@ -36,7 +50,7 @@ const Header = () => {
                 </div>
                 <div className='flex items-center'>
                     <img className='w-20 h-20' src={Logo} alt="" />
-                    <a className="btn btn-ghost normal-case text-xl">Tesla Cars</a>
+                    <a className="btn btn-ghost normal-case text-xl">BMW Cars</a>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">

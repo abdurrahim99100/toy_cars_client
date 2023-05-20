@@ -1,52 +1,50 @@
 import React, { useContext } from 'react';
 import Img from '../assets/login/login.svg';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import { AuthContext } from '../../Provider/AuthProvider';
 import { FaFacebook, FaGoogle, FaLinkedinIn } from "react-icons/fa";
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Login = () => {
 
-    // const { signIn, googleSignIn } = useContext(AuthContext);
-    // const location = useLocation();
-    // const navigate = useNavigate();
+    const { signIn, googleSignIn } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
 
 
-    // const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/";
 
-    // const handleSubmit = event => {
-    //     event.preventDefault();
-    //     const form = event.target;
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
 
-    //     const email = form.email.value;
-    //     const password = form.password.value;
+        const email = form.email.value;
+        const password = form.password.value;
 
-    //     signIn(email, password)
-    //         .then(result => {
-    //             const user = result.user;
-                
-    //             console.log(loggedUser);
-    //             navigate(from, {replace: true});
-                
-    //         })
-    //         .catch(error => {
-    //             console.log(error)
-    //         })
-    // };
+        signIn(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+
+                console.log(loggedUser);
+                navigate(from, { replace: true });
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    };
 
     // Google singIn;
-    
-    // const handleGoogleSignIn = () => {
-    //     googleSignIn()
-    //         .then(res => {
-    //             if(res._tokenResponse.email){
-    //                 navigate(from)
-    //             }
-    //             console.log(res)
-    //         })
-    //         .catch(error => {
-    //             console.log(error)
-    //         })
-    // }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(res => {
+                navigate(from)
+                console.log(res)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    };
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -56,7 +54,7 @@ const Login = () => {
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <h1 className="text-3xl text-center font-bold mt-4">Login</h1>
-                    <form className="card-body">
+                    <form onSubmit={handleSubmit} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -67,7 +65,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="text" placeholder="password" name='password' className="input input-bordered" />
+                            <input type="password" placeholder="password" name='password' className="input input-bordered" />
                             <div>
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
@@ -80,11 +78,11 @@ const Login = () => {
                     </form>
                     <div className='mb-10'>
                         <h3 className='text-center mt-5'>Or Sign Up With</h3>
-                        <div className='flex gap-4 justify-center my-5'>
+                        <div className='flex gap-7 justify-center my-5 text-2xl'>
                             <button>
                                 <FaFacebook />
                             </button>
-                            <button >
+                            <button onClick={handleGoogleSignIn}>
                                 <FaGoogle />
                             </button>
                             <button>
