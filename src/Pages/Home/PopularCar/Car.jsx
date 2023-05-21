@@ -8,7 +8,6 @@ const Car = ({ car }) => {
             <div className='border'>
                 <img className='w-[320px] h-[200px] rounded drop-shadow-lg' src={photo} alt="" />
             </div>
-        
     );
 };
 
