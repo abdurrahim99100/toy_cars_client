@@ -1,18 +1,11 @@
 import React from 'react';
 
-const Toy = ({ myToy }) => {
+const Toy = ({ myToy, handleDelete }) => {
     // console.log(myToy);
     const { adquantity, name, photoURL, price, rating, sellerName, selleremail, subcategory, textaria, _id } = myToy;
 
 
-    const handleDelete = id => {
-        const proceed = confirm('ARE YOU SURE YOU WONT TO DELETE');
-        if(proceed){
-            fetch(``)
-            .then(res => res.json())
-            .then(data => console.log(data))
-        }
-    }
+
 
 
     return (

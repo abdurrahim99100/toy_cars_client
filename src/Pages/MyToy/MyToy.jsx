@@ -16,6 +16,24 @@ const MyToy = () => {
     // console.log(myToys);
 
 
+    const handleDelete = id => {
+        const proceed = confirm('ARE YOU SURE YOU WONT TO DELETE');
+        if (proceed) {
+            fetch(`http://localhost:5000/my-toy/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0){
+                        alert('DELETE SUCCESSFULLY')
+                        const remaining = myToys.filter(myToy => myToy._id !== id);
+                        setMyToys(remaining);
+                    }
+                })
+        }
+    }
+
+
     return (
         <div className='container mx-auto my-20 h-[100vh]'>
             <div className='flex justify-center'>
@@ -42,6 +60,7 @@ const MyToy = () => {
                             myToys?.map(myToy => <Toy
                                 key={myToy._id}
                                 myToy={myToy}
+                                handleDelete={handleDelete}
                             ></Toy>)
                         }
                     </tbody>
