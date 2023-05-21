@@ -4,7 +4,6 @@ import { AuthContext } from '../../Provider/AuthProvider';
 const AddToy = () => {
 
     const { user } = useContext(AuthContext);
-    // console.log(user.displayName, user.email);
 
     const handleAddToy = event => {
         event.preventDefault();
