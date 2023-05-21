@@ -26,6 +26,9 @@ const MyToy = () => {
                     {/* head */}
                     <thead>
                         <tr>
+                            <th>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                            </th>
                             <th>Seller</th>
                             <th>Toy Name</th>
                             <th>Sub-category</th>
@@ -37,8 +40,8 @@ const MyToy = () => {
                     <tbody>
                         {
                             myToys?.map(myToy => <Toy
-                            key={myToy._id}
-                            myToy={myToy}
+                                key={myToy._id}
+                                myToy={myToy}
                             ></Toy>)
                         }
                     </tbody>
