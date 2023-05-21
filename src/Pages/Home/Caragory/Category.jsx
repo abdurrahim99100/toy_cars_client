@@ -5,7 +5,7 @@ const Category = () => {
     const [cars, setCars] = useState([]);
     const [active, setActive] = useState('Jeep')
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${active}`)
+        fetch(`https://toy-cars-server-one.vercel.app/products/${active}`)
             .then(res => res.json())
             .then(data => {
                 setCars(data);

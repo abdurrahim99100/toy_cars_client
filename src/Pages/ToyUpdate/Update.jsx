@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 
-const AddToy = () => {
-
+const Update = () => {
+    const loadUser = useLoaderData();
     const { user } = useContext(AuthContext);
+    console.log(loadUser);
 
-    const handleAddToy = event => {
+
+    const handleUpdate = event => {
         event.preventDefault();
         const form = event.target;
 
@@ -19,7 +22,7 @@ const AddToy = () => {
         const adquantity = form.abquantity.value;
         const textaria = form.textaria.value;
 
-        const addToy = {
+        const updateToy = {
             photoURL: photoUrl,
             name,
             sellerName,
@@ -30,28 +33,32 @@ const AddToy = () => {
             adquantity,
             textaria
         }
-        console.log(addToy);
-        fetch('https://toy-cars-server-one.vercel.app/add-toy', {
-            method: 'POST',
+        console.log(updateToy);
+        fetch(`https://toy-cars-server-one.vercel.app/update/${loadUser._id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(addToy)
+            body: JSON.stringify(updateToy)
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                if (data.modifiedCount > 0) {
+                    alert('UPDATED')
+                }
                 form.reset();
             })
     };
 
 
+
     return (
         <div className='container mx-auto my-20'>
             <div>
-                <h2 className='text-center text-4xl font-bold my-5'>Add A toy</h2>
+                <h2 className='text-center text-4xl font-bold my-5'>Update toy</h2>
                 <form
-                    onSubmit={handleAddToy}
+                    onSubmit={handleUpdate}
                     className='border border-gray-300 rounded-2xl drop-shadow-2xl p-10 '>
                     <div className='grid grid-cols-2 gap-5'>
                         <div>
@@ -130,7 +137,7 @@ const AddToy = () => {
                         </div>
                     </div>
                     <div className='flex justify-center my-5'>
-                        <button className="btn btn-primary">Submit</button>
+                        <button className="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
@@ -138,4 +145,4 @@ const AddToy = () => {
     );
 };
 
-export default AddToy;
+export default Update;

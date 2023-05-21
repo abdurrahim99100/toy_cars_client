@@ -5,7 +5,7 @@ import Toy from './Toy';
 const MyToy = () => {
     const { user } = useContext(AuthContext);
     const [myToys, setMyToys] = useState();
-    const url = (`http://localhost:5000/my-toy?email=${user?.email}`)
+    const url = (`https://toy-cars-server-one.vercel.app/my-toy?email=${user?.email}`)
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -19,7 +19,7 @@ const MyToy = () => {
     const handleDelete = id => {
         const proceed = confirm('ARE YOU SURE YOU WONT TO DELETE');
         if (proceed) {
-            fetch(`http://localhost:5000/my-toy/${id}`, {
+            fetch(`https://toy-cars-server-one.vercel.app/my-toy/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -45,7 +45,7 @@ const MyToy = () => {
                     <thead>
                         <tr>
                             <th>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                             </th>
                             <th>Seller</th>
                             <th>Toy Name</th>

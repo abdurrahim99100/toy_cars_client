@@ -10,6 +10,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import AddToy from "../Pages/AddToy/AddToy";
 import AllToy from "../Pages/AllToy/Alltoy";
 import MyToy from "../Pages/MyToy/MyToy";
+import Update from "../Pages/ToyUpdate/Update";
 
 
 
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: "viewdetails/:id",
         element: <PrivateRoutes><ViewDetails></ViewDetails></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/viewdetail/${params.id}`)
+        loader: ({ params }) => fetch(`https://toy-cars-server-one.vercel.app/viewdetail/${params.id}`)
       },
       {
         path: "myToy",
@@ -37,9 +38,14 @@ const router = createBrowserRouter([
         element: <PrivateRoutes><AddToy></AddToy></PrivateRoutes>
       },
       {
+        path: "/update/:id",
+        element: <PrivateRoutes><Update></Update></PrivateRoutes>,
+        loader: ({params}) => fetch(`https://toy-cars-server-one.vercel.app/update/${params.id}`)
+      },
+      {
         path: "allToy",
         element: <AllToy></AllToy>,
-        loader: () => fetch('http://localhost:5000/get-toy')
+        loader: () => fetch('https://toy-cars-server-one.vercel.app/get-toy')
       },
       {
         path: "blog",

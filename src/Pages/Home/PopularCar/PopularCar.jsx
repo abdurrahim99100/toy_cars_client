@@ -5,7 +5,7 @@ import Marquee from 'react-fast-marquee';
 const PopularCar = () => {
     const [cars, setCar] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://toy-cars-server-one.vercel.app/products')
             .then(res => res.json())
             .then(data => {
                 setCar(data);
