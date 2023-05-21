@@ -11,7 +11,6 @@ const PopularCar = () => {
                 setCar(data);
             })
     }, []);
-    // console.log(cars);
     return (
         <Marquee>
             <div className='flex gap-40 my-36'>
