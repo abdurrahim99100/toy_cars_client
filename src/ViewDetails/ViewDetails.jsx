@@ -4,7 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 const ViewDetails = () => {
     const loadData = useLoaderData();
     const data = loadData[0];
-    console.log(data);
+    // console.log(data);
     const { category, company, name, phone, photo, rating, salary, about } = data;
     return (
         <div className='container mx-auto my-[130px] '>

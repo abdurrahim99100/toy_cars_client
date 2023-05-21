@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/logo/images.png';
-import '../Shared/shared.css';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Header = () => {
@@ -22,11 +21,10 @@ const Header = () => {
                     <li><Link to='/myToy'>My Toys</Link></li>
                     <li><Link to='/addToy'>Add A Toy</Link></li>
                     <li><button onClick={handleSignOut}>Log out</button></li>
-                    <li className=''>
-                        <img 
-                        className='profile' 
-                        src={user?.photoURL} alt="" />
-                    </li>
+                    <img
+                        className='w-10 h-10 rounded-full'
+                        src={user?.photoURL} alt=""
+                    />
                 </> :
                 <li><Link to='/login'>Login</Link></li>
         }

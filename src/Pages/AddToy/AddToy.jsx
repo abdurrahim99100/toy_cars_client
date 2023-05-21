@@ -1,11 +1,59 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const AddToy = () => {
+
+    const { user } = useContext(AuthContext);
+    // console.log(user.displayName, user.email);
+
+    const handleAddToy = event => {
+        event.preventDefault();
+        const form = event.target;
+
+        const photoUrl = form.url.value;
+        const name = form.name.value;
+        const sellerName = form.selarname.value;
+        const selleremail = form.selaremail.value;
+        const subcategory = form.subcategory.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const adquantity = form.abquantity.value;
+        const textaria = form.textaria.value;
+
+        const addToy = {
+            photoURL: photoUrl,
+            name,
+            sellerName,
+            selleremail,
+            subcategory,
+            price,
+            rating,
+            adquantity,
+            textaria
+        }
+        console.log(addToy);
+        fetch('http://localhost:5000/add-toy', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(addToy)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                form.reset();
+            })
+    };
+
+
     return (
         <div className='container mx-auto my-20'>
             <div>
                 <h2 className='text-center text-4xl font-bold my-5'>Add A toy</h2>
-                <form className='border border-gray-300 rounded-2xl drop-shadow-2xl p-10 '>
+                <form
+                    onSubmit={handleAddToy}
+                    className='border border-gray-300 rounded-2xl drop-shadow-2xl p-10 '>
                     <div className='grid grid-cols-2 gap-5'>
                         <div>
                             <label>
@@ -29,7 +77,7 @@ const AddToy = () => {
                             </label>
                             <input
                                 className='block mb-5 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                type="text" name="selarname" id="" />
+                                type="text" name="selarname" id="" defaultValue={user?.displayName} />
                         </div>
                         <div>
                             <label>
@@ -37,7 +85,7 @@ const AddToy = () => {
                             </label>
                             <input
                                 className='block mb-5 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                type="email" name="email" id="" />
+                                type="email" name="selaremail" id="" defaultValue={user?.email} />
                         </div>
                         <div>
                             <label>

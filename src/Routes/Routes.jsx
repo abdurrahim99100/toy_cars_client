@@ -30,15 +30,16 @@ const router = createBrowserRouter([
       },
       {
         path: "myToy",
-        element: <MyToy></MyToy>
+        element: <PrivateRoutes><MyToy></MyToy></PrivateRoutes>
       },
       {
         path: "addToy",
-        element: <AddToy></AddToy>
+        element: <PrivateRoutes><AddToy></AddToy></PrivateRoutes>
       },
       {
         path: "allToy",
-        element: <AllToy></AllToy>
+        element: <AllToy></AllToy>,
+        loader: () => fetch('http://localhost:5000/get-toy')
       },
       {
         path: "blog",
