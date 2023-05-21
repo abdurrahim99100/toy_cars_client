@@ -5,7 +5,6 @@ import Toys from './Toys';
 const AllToy = () => {
     const loadDataToy = useLoaderData();
 
-    // console.log(loadDataToy);
     return (
         <div className='container mx-auto my-20'>
             <div className='flex justify-center'>
